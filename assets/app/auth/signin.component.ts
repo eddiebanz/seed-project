@@ -1,26 +1,25 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
-    selector:'app-signin',
-    templateUrl:'./signin.component.html'
+    selector: 'app-signin',
+    templateUrl: './signin.component.html'
 })
-
-export class SigninComponent implements OnInit{
+export class SigninComponent {
     myForm: FormGroup;
 
-    onsubmit() {
+    onSubmit() {
         console.log(this.myForm);
         this.myForm.reset();
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.myForm = new FormGroup({
-            mail : new FormControl(null, [
+            email: new FormControl(null, [
                 Validators.required,
-                Validators.pattern("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
+                Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
             ]),
-            password : new FormControl(null, Validators.required)
-        })
+            password: new FormControl(null, Validators.required)
+        });
     }
 }
