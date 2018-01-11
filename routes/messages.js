@@ -4,10 +4,11 @@ var router = express.Router();
 var Message = require ('../models/message');
 
 router.post('/', function (req, res, next) {
-    var Message = new Message({
+    var message = new Message({
         content: req.body.content
     });
-    Message.save(function(err, result){
+    message.save(function(err, result){
+        console.log('saving now');
         if (err){
             return res.status(500).json({
                 title: 'An error occured',
@@ -15,7 +16,7 @@ router.post('/', function (req, res, next) {
             });
         }
         res.status(201).json({
-            title: 'Saved message',
+            message: 'Saved message',
             obj: result
         });
     });
